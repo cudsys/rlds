@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rlds</title>
+    <style>
+        body { 
+            font-family: 'Ubuntu', sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            background-color: #2c2c2c; 
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 1s ease, color 1s ease;
+        }
+        input, button {
+            font-size: 1.2em;
+            margin: 10px;
+            background-color: rgba(255, 255, 255, 0.2); /* translucent white */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        input {
+            width: 250px;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.4); /* Slightly more opaque on hover */
+        }
+        #output {
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding-left: 160px;
+            padding-right: 160px;
+
+        }
+        #sp {
+            width: 100px;
+            margin-top: 5px;
+            display: block;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0;
+        }
+        .result {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        #disclaimer {
+            color:rgba(255, 255, 255, 0.25)
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>rlds</h1>
+    <p>real life difficulty speculator</p>
+    <input type="text" id="nameInput" placeholder="enter name...">
+    <br>
+    <button onclick="handleAction()">speculate</button>
+    <div id="output"></div>
+
+    <script>
+        // function to handle text and background color change
+        function updateDisplay(text1, text2, colorHex) {
+            const output = document.getElementById("output");
+            output.innerHTML = `<h2>${text1}</h2><p>${text2}</p>`;
+            
+            // change background color and text color
+            document.body.style.backgroundColor = colorHex;
+
+            // determine if color is light or dark to adjust text color
+            const hex = colorHex.replace("#", "");
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+
+            // calculate brightness
+            const brightness = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            document.body.style.color = brightness > 225 ? 'black' : 'white';
+        }
+
+        function handleAction() {
+            const inputText = document.getElementById("nameInput").value.trim().toLowerCase();
+
+            switch (inputText) {
+                case 'hailey':
+                    updateDisplay("Hailey Mode", "A branch off from Master Mode, Hailey Mode puts you into the life of the titular Hailey. Battle the troubles of life including transitioning, autism, plurality, love and more. And yes, Permadeath is on.", "#005252");
+                    break;
+                case '404':
+                    updateDisplay("Insane", "The next step down from Hard, and as such, is Hard taken up to 11! Can you handle everything thrown at you and a little more?", "#4f2168"); 
+                    break;
+                case 'leyton':
+                    updateDisplay("Insane", "The next step down from Hard, and as such, is Hard taken up to 11! Can you handle everything thrown at you and a little more?", "#4f2168"); 
+                    break;
+                case 'shm':
+                    updateDisplay("shm mode", "you are shm", "#74bf6f");
+                    break;
+                case 'darcy':
+                    updateDisplay(":3 Mode", ":3", "#c72a2a")
+                    break;
+                case 'arg':
+                    updateDisplay("??????????", "Y29taW5nIHNvb24uLi4uLi5pIGd1ZXNzIGxtYW8=", "#141414")
+                    break;
+                default:
+                    updateDisplay("Easy", "A slightly more stress-free experience for first time life-livers.", "#4bb350");
+                    break;
+            }
+        }
+    </script>
+    <br>
+    <br>
+    <br>
+    <p id="disclaimer">neither hailey nor cudsys studios are responsible for any easter eggs found.</p>
+</body>
+</html>
